@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopNest — thoughtful finds for your everyday.">
+  <title>ShopNest | Good finds. Better living.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ShopNest home"><span class="brand-mark">S</span>ShopNest<span class="brand-dot">.</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#shop">Shop</a><a href="#why-us">Why ShopNest</a>
+    </nav>
+    <button class="cart-trigger" id="cart-toggle" type="button" aria-label="Open shopping cart">
+      <span aria-hidden="true">🛍</span><span>Cart</span><span class="cart-count" id="cart-count">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> THE EVERYDAY EDIT</span>
+        <h1>Good finds.<br><span>Better living.</span></h1>
+        <p>Thoughtful picks for your everyday — from tech that clicks to styles that feel like you.</p>
+        <a class="primary-link" href="#shop">Explore the collection <span>↗</span></a>
+      </div>
+      <div class="hero-art" aria-label="ShopNest shopping collection">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="hero-card card-back"><span>YOUR DAILY<br>UPGRADE</span><b>✳</b></div>
+        <div class="hero-card card-front"><span class="hero-tag">CURATED FOR YOU</span><div class="hero-bag">🛍️</div><strong>Find your<br>next favourite.</strong><small>THE SHOPNEST EDITION</small></div>
+        <span class="sparkle sparkle-a">✦</span><span class="sparkle sparkle-b">✳</span>
+      </div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><span class="eyebrow">THE COLLECTION</span><h2>Shop your way<span class="brand-dot">.</span></h2></div>
+        <p id="results-count" class="results-count" aria-live="polite">Loading products…</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box" for="search-input">
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Search products..." autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </label>
+        <div class="category-filters" id="category-filters" aria-label="Filter by category">
+          <button class="filter-btn active" data-category="All" type="button" aria-pressed="true">All</button>
+          <button class="filter-btn" data-category="Electronics" type="button" aria-pressed="false">Electronics</button>
+          <button class="filter-btn" data-category="Clothing" type="button" aria-pressed="false">Clothing</button>
+          <button class="filter-btn" data-category="Footwear" type="button" aria-pressed="false">Footwear</button>
+          <button class="filter-btn" data-category="Books" type="button" aria-pressed="false">Books</button>
+        </div>
+      </div>
+
+      <div id="loading-state" class="state-message" role="status">Gathering the good stuff…</div>
+      <div id="error-state" class="state-message error-state" role="alert" hidden>
+        We couldn't load products. Check your internet connection and try again.
+        <button id="retry-button" class="text-button" type="button">Try again</button>
+      </div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span aria-hidden="true">⌕</span><h3>No products found</h3>
+        <p>Try another search or choose a different category.</p>
+        <button id="clear-filters" class="text-button" type="button">Clear all filters</button>
+      </div>
+    </section>
+
+    <section class="why-section" id="why-us">
+      <div><span class="eyebrow">THE SHOPNEST PROMISE</span><h2>Little things.<br>Big difference.</h2></div>
+      <div class="promise-list">
+        <article><span>✦</span><div><h3>Curated with care</h3><p>Useful, feel-good finds for your everyday routine.</p></div></article>
+        <article><span>↗</span><div><h3>Easy from start to finish</h3><p>A simple shopping experience, without the fuss.</p></div></article>
+        <article><span>♡</span><div><h3>Made for your wishlist</h3><p>Discover something worth coming back for.</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart-overlay" id="cart-overlay" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="cart-header">
+      <div><span class="eyebrow">YOUR PICKS</span><h2 id="cart-title">Your cart <span id="drawer-count">(0)</span></h2></div>
+      <button id="close-cart" class="icon-button" type="button" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span>🛍️</span><h3>Your cart is taking a nap</h3><p>Add something lovely to wake it up.</p></div>
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div class="subtotal-row"><span>Subtotal</span><strong id="cart-total">₹0</strong></div>
+      <p class="shipping-note">Shipping and taxes calculated at checkout.</p>
+      <button class="checkout-btn" id="checkout-button" type="button">Continue shopping <span>→</span></button>
+    </div>
+  </aside>
+
+  <footer>
+    <a class="brand" href="#"><span class="brand-mark">S</span>ShopNest<span class="brand-dot">.</span></a>
+    <p>Made for the things you love. © <span id="year"></span> ShopNest.</p>
+  </footer>
+</body>
+</html>
